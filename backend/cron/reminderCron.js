@@ -23,9 +23,10 @@ cron.schedule("0 9 * * *", async () => {
       const user = await User.findById(sub.userId);
 
       if (user) {
+        const toEmail = sub.notificationEmail || user.notificationEmail || user.email;
 
         await sendReminderEmail(
-          user.email,
+          toEmail,
           sub.name,
           expiry.toDateString()
         );

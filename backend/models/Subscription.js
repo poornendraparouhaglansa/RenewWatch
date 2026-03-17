@@ -13,6 +13,38 @@ const SubscriptionSchema = new mongoose.Schema({
     enum: ["domain", "ssl", "hosting", "other"]
   },
 
+  provider: {
+    type: String,
+  },
+
+  amount: {
+    type: Number,
+  },
+
+  currency: {
+    type: String,
+    default: "USD",
+  },
+
+  billingCycle: {
+    type: String,
+    enum: ["one-time", "monthly", "quarterly", "yearly"],
+    default: "yearly",
+  },
+
+  autoRenew: {
+    type: Boolean,
+    default: true,
+  },
+
+  notes: {
+    type: String,
+  },
+
+  notificationEmail: {
+    type: String,
+  },
+
   expiryDate: Date,
 
   reminderDays: Number,

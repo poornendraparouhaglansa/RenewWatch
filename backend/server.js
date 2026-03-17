@@ -8,6 +8,7 @@ const connectDB = require("./config/db");
 
 const authRoutes = require("./routes/authRoutes");
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -18,6 +19,7 @@ connectDB();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
+app.use("/api/users", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Subscription Reminder API Running");
